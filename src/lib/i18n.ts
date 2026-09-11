@@ -7,7 +7,7 @@ export const DEFAULT_LANGUAGE: Language = "en";
 type Dictionary = Record<string, Record<Language, string>>;
 
 export const UI_TEXT: Dictionary = {
-  title: { en: "The Drunk Goose", es: "La Oca Borracha" },
+  title: { en: "Blowjob Palma", es: "Palma la chupa" },
   subtitle: {
     en: "A party board game — drink responsibly!",
     es: "Un juego de mesa de fiesta — ¡bebe con responsabilidad!",
