@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { FaGlobe } from "react-icons/fa6";
 import { useLanguage } from "@/context/LanguageContext";
 import { useOnlineGame } from "@/context/OnlineGameContext";
 import { LanguageSwitch } from "./LanguageSwitch";
@@ -33,8 +34,8 @@ export function OnlineLobby({ onExit }: { onExit: () => void }) {
         <LanguageSwitch />
       </div>
 
-      <h1 className="bg-gradient-to-r from-pink-400 via-fuchsia-300 to-cyan-300 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">
-        🌐 {t("playOnline")}
+      <h1 className="flex items-center justify-center gap-2 bg-gradient-to-r from-pink-400 via-fuchsia-300 to-cyan-300 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">
+        <FaGlobe className="text-[var(--cyan)]" /> {t("playOnline")}
       </h1>
 
       <div className="flex w-full max-w-sm flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_8px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">

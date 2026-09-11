@@ -3,13 +3,14 @@ import type { GameState, Player } from "./types";
 import { BOARD_END, MAX_TOKENS_PER_SQUARE } from "./types";
 
 export type GameAction =
-  | { type: "START_GAME"; numPlayers: number }
+  | { type: "START_GAME"; numPlayers: number; names?: string[] }
   | { type: "ROLL_START"; roll: number }
   | { type: "ROLL_RESULT"; roll: number }
   | { type: "RESOLVE_MODAL"; tookShot: boolean }
   | { type: "SKIP_JAILED_TURN" }
   | { type: "DISMISS_TOAST" }
-  | { type: "RESTART" };
+  | { type: "RESTART" }
+  | { type: "HYDRATE"; state: GameState };
 
 export const initialGameState: GameState = {
   phase: "setup",
@@ -35,6 +36,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
     case "START_GAME": {
       const players: Player[] = Array.from({ length: action.numPlayers }, (_, i) => ({
         id: i,
+        name: action.names?.[i]?.trim() ?? "",
         color: PLAYER_COLORS[i % PLAYER_COLORS.length],
         position: 0,
         shots: 0,
@@ -46,6 +48,10 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         players,
         toast: { key: "gameStarted" },
       };
+    }
+
+    case "HYDRATE": {
+      return action.state;
     }
 
     case "ROLL_START": {

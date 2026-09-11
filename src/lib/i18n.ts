@@ -13,6 +13,10 @@ export const UI_TEXT: Dictionary = {
     es: "Un juego de mesa de fiesta — ¡bebe con responsabilidad!",
   },
   numPlayersLabel: { en: "Select number of players:", es: "Selecciona la cantidad de jugadores:" },
+  playerNamesLabel: {
+    en: "Names (optional):",
+    es: "Nombres (opcional):",
+  },
   startGame: { en: "Start Game", es: "Iniciar Juego" },
   players: { en: "Players", es: "Jugadores" },
   shotsShort: { en: "shots", es: "shots" },
@@ -36,7 +40,7 @@ export const UI_TEXT: Dictionary = {
   winnerAnnouncement: { en: "wins the game!", es: "¡gana la partida!" },
   finalScoresTitle: { en: "Final shot count", es: "Conteo final de shots" },
   playAgain: { en: "Play again", es: "Jugar de nuevo" },
-  toastGameStarted: { en: "The game has begun! Cheers 🍻", es: "¡El juego ha comenzado! Salud 🍻" },
+  toastGameStarted: { en: "The game has begun! Cheers", es: "¡El juego ha comenzado! Salud" },
   toastSquareFull: { en: "Square is full! Roll again.", es: "¡Casilla llena! Vuelve a tirar." },
   toastJailSkip: {
     en: "was in jail and loses their turn!",
@@ -48,7 +52,7 @@ export const UI_TEXT: Dictionary = {
   },
   spacesShort: { en: "space(s)", es: "casilla(s)" },
   languageSwitchLabel: { en: "Language", es: "Idioma" },
-  rolledLabel: { en: "🎲 Rolled:", es: "🎲 Salió:" },
+  rolledLabel: { en: "Rolled:", es: "Salió:" },
   safeMessage: { en: "Safe! No shots this time.", es: "¡Salvado! No tomas esta vez." },
   minPlayersError: {
     en: "Choose between 3 and 15 players.",
@@ -58,12 +62,12 @@ export const UI_TEXT: Dictionary = {
   waitingFor: { en: "Waiting for", es: "Esperando a" },
   tabGame: { en: "Game", es: "Juego" },
   tabPlayers: { en: "Players", es: "Jugadores" },
-  playLocal: { en: "📱 Play on this device", es: "📱 Jugar en este dispositivo" },
+  playLocal: { en: "Play on this device", es: "Jugar en este dispositivo" },
   playLocalDesc: {
     en: "Pass the phone around the table, turn by turn.",
     es: "Pasa el teléfono en la mesa, turno por turno.",
   },
-  playOnline: { en: "🌐 Play online", es: "🌐 Jugar en línea" },
+  playOnline: { en: "Play online", es: "Jugar en línea" },
   playOnlineDesc: {
     en: "Everyone joins from their own phone.",
     es: "Cada persona entra desde su propio teléfono.",
@@ -89,6 +93,13 @@ export const UI_TEXT: Dictionary = {
   leaveRoom: { en: "Leave room", es: "Salir de la sala" },
   backToMenu: { en: "Back to menu", es: "Volver al menú" },
   loadingBoard: { en: "Loading board…", es: "Cargando tablero…" },
+  newGame: { en: "New game", es: "Nueva partida" },
+  confirmRestart: {
+    en: "Start a new game? Current progress will be lost.",
+    es: "¿Iniciar una nueva partida? Se perderá el progreso actual.",
+  },
+  confirm: { en: "Yes, restart", es: "Sí, reiniciar" },
+  cancel: { en: "Cancel", es: "Cancelar" },
 };
 
 export function t(key: keyof typeof UI_TEXT, lang: Language): string {

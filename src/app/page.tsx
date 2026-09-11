@@ -9,6 +9,7 @@ import { StartScreen } from "@/components/StartScreen";
 import { GameProvider, useGame } from "@/context/GameContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { OnlineGameProvider, useOnlineGame } from "@/context/OnlineGameContext";
+import { ONLINE_MULTIPLAYER_ENABLED } from "@/lib/config";
 
 type Mode = "select" | "local" | "online";
 
@@ -29,7 +30,7 @@ function OnlineRouter({ onExit }: { onExit: () => void }) {
 }
 
 function AppRouter() {
-  const [mode, setMode] = useState<Mode>("select");
+  const [mode, setMode] = useState<Mode>(ONLINE_MULTIPLAYER_ENABLED ? "select" : "local");
 
   if (mode === "select") {
     return (

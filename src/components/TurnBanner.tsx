@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { useActiveGame } from "@/context/useActiveGame";
 import { getContrastTextColor } from "@/lib/color";
+import { playerLabel } from "@/lib/playerLabel";
 import { Dice3D } from "./Dice3D";
 
 export function TurnBanner() {
@@ -38,7 +39,7 @@ export function TurnBanner() {
             {t("turnOf")}
           </span>
           <span className="text-xl font-extrabold drop-shadow-sm">
-            {t("player")} {current.id + 1}
+            {playerLabel(current, t("player"))}
           </span>
         </motion.div>
       </AnimatePresence>
@@ -56,7 +57,7 @@ export function TurnBanner() {
             ? t("rolling")
             : isMyTurn
               ? t("rollDice")
-              : `${t("waitingFor")} ${t("player")} ${current.id + 1}`}
+              : `${t("waitingFor")} ${playerLabel(current, t("player"))}`}
         </motion.button>
       </div>
     </div>

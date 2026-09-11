@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { FaUsers } from "react-icons/fa6";
+import { GiBeerStein } from "react-icons/gi";
+import { IoGameControllerOutline } from "react-icons/io5";
 import { useLanguage } from "@/context/LanguageContext";
 import { useActiveGame } from "@/context/useActiveGame";
 import { useBoardImagesReady } from "@/lib/useBoardImagesReady";
@@ -26,8 +29,8 @@ export function GameScreen() {
   return (
     <div className="flex min-h-dvh flex-col items-center gap-6 px-4 py-6">
       <div className="flex w-full max-w-[1700px] items-center justify-between">
-        <h1 className="bg-gradient-to-r from-pink-400 via-fuchsia-300 to-cyan-300 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">
-          🍺 {t("title")}
+        <h1 className="flex items-center gap-2 bg-gradient-to-r from-pink-400 via-fuchsia-300 to-cyan-300 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">
+          <GiBeerStein className="text-[var(--pink)]" /> {t("title")}
         </h1>
         <LanguageSwitch />
       </div>
@@ -61,7 +64,9 @@ export function GameScreen() {
                 : "text-[var(--text-dim)]"
             }`}
           >
-            🎮 {t("tabGame")}
+            <span className="inline-flex items-center gap-1.5">
+              <IoGameControllerOutline /> {t("tabGame")}
+            </span>
           </button>
           <button
             type="button"
@@ -72,7 +77,9 @@ export function GameScreen() {
                 : "text-[var(--text-dim)]"
             }`}
           >
-            👥 {t("tabPlayers")}
+            <span className="inline-flex items-center gap-1.5">
+              <FaUsers /> {t("tabPlayers")}
+            </span>
           </button>
         </div>
 

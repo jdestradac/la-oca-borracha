@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { FaTrophy } from "react-icons/fa6";
 import { useLanguage } from "@/context/LanguageContext";
 import { useActiveGame } from "@/context/useActiveGame";
+import { playerLabel } from "@/lib/playerLabel";
 import { RoomBadge } from "./RoomBadge";
 
 export function FinalSummary() {
@@ -20,8 +22,8 @@ export function FinalSummary() {
     >
       <RoomBadge />
 
-      <h1 className="title-bounce bg-gradient-to-r from-amber-300 via-pink-300 to-cyan-300 bg-clip-text text-4xl font-bold text-transparent drop-shadow-[0_0_25px_rgba(251,191,36,0.35)] sm:text-5xl">
-        🏆 {t("gameOverTitle")}
+      <h1 className="title-bounce flex items-center justify-center gap-3 bg-gradient-to-r from-amber-300 via-pink-300 to-cyan-300 bg-clip-text text-4xl font-bold text-transparent drop-shadow-[0_0_25px_rgba(251,191,36,0.35)] sm:text-5xl">
+        <FaTrophy className="text-amber-300" /> {t("gameOverTitle")}
       </h1>
 
       {winner && (
@@ -30,7 +32,7 @@ export function FinalSummary() {
             className="mr-2 inline-block h-4 w-4 rounded-full align-middle"
             style={{ background: winner.color }}
           />
-          {t("player")} {winner.id + 1} {t("winnerAnnouncement")}
+          {playerLabel(winner, t("player"))} {t("winnerAnnouncement")}
         </p>
       )}
 
@@ -43,9 +45,7 @@ export function FinalSummary() {
               className="flex items-center justify-between rounded-lg bg-white/[0.04] px-4 py-2 font-semibold"
               style={{ color: player.color }}
             >
-              <span>
-                {t("player")} {player.id + 1}
-              </span>
+              <span>{playerLabel(player, t("player"))}</span>
               <span>
                 {player.shots} {player.shots === 1 ? t("shotShort") : t("shotsShort")}
               </span>

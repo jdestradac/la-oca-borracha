@@ -1,6 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { FaCheck, FaDice, FaHourglassHalf } from "react-icons/fa6";
+import { GiGlassShot } from "react-icons/gi";
 import { useLanguage } from "@/context/LanguageContext";
 import { useActiveGame } from "@/context/useActiveGame";
 import { getSquare } from "@/lib/boardData";
@@ -40,8 +42,8 @@ export function ChallengeModal() {
             <p className="text-xl font-semibold text-[var(--text)]">{square?.text[language] ?? ""}</p>
 
             {modal.rollResult !== undefined && (
-              <p className="text-lg font-bold text-[var(--cyan)]">
-                {t("rolledLabel")} <span className="text-white">{modal.rollResult}</span>
+              <p className="flex items-center justify-center gap-2 text-lg font-bold text-[var(--cyan)]">
+                <FaDice /> {t("rolledLabel")} <span className="text-white">{modal.rollResult}</span>
               </p>
             )}
 
@@ -59,8 +61,8 @@ export function ChallengeModal() {
             )}
 
             {!isMyTurn && (
-              <p className="text-sm font-semibold text-[var(--text-dim)]">
-                ⏳ {t("waitingFor")} {t("player")} {state.currentPlayerIndex + 1}…
+              <p className="flex items-center justify-center gap-2 text-sm font-semibold text-[var(--text-dim)]">
+                <FaHourglassHalf /> {t("waitingFor")} {t("player")} {state.currentPlayerIndex + 1}…
               </p>
             )}
 
@@ -71,14 +73,14 @@ export function ChallengeModal() {
                     onClick={() => resolveModal(false)}
                     className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-400 px-6 py-3 font-bold text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-shadow hover:shadow-[0_0_30px_rgba(16,185,129,0.6)]"
                   >
-                    <span aria-hidden>✅</span> {t("challengeDone")}
+                    <FaCheck aria-hidden /> {t("challengeDone")}
                   </button>
                   {modal.hasAlternative && (
                     <button
                       onClick={() => resolveModal(true)}
                       className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 px-6 py-3 font-bold text-white shadow-[0_0_20px_rgba(255,45,120,0.4)] transition-shadow hover:shadow-[0_0_30px_rgba(255,45,120,0.6)]"
                     >
-                      <span aria-hidden>🥃</span> {t("tookShot")}
+                      <GiGlassShot aria-hidden /> {t("tookShot")}
                     </button>
                   )}
                 </>
@@ -89,7 +91,7 @@ export function ChallengeModal() {
                   onClick={() => resolveModal(true)}
                   className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 px-6 py-3 font-bold text-white shadow-[0_0_20px_rgba(255,45,120,0.4)] transition-shadow hover:shadow-[0_0_30px_rgba(255,45,120,0.6)]"
                 >
-                  <span aria-hidden>🥃</span> {t("drankThem")}
+                  <GiGlassShot aria-hidden /> {t("drankThem")}
                 </button>
               )}
 

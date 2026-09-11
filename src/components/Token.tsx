@@ -19,8 +19,9 @@ export function Token({
 
   return (
     <motion.div
-      layout
-      layoutId={`token-${player.id}`}
+      key={player.position}
+      initial={{ scale: 0.5, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 24 }}
       className="flex items-center justify-center rounded-full border-2 border-white font-bold shadow-[0_0_4px_rgba(0,0,0,0.6)]"
       style={{

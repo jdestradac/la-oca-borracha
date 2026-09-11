@@ -51,6 +51,29 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.pretty-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--pink) rgba(255, 255, 255, 0.06);
+}
+
+.pretty-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pretty-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+}
+
+.pretty-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--pink), var(--purple));
+  border-radius: 999px;
+}
+
+.pretty-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--purple), var(--pink));
+}
+
 @keyframes bounce-title {
   from {
     transform: translateY(0);

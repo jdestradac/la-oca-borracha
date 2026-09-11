@@ -26,6 +26,8 @@ export interface SquareData {
 
 export interface Player {
   id: number;
+  /** Custom name if the player set one; empty string falls back to "Player N" at display time. */
+  name: string;
   color: string;
   position: number;
   shots: number;

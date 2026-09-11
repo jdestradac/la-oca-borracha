@@ -14,15 +14,29 @@ import type { GameState } from "@/lib/types";
 
 const DICE_ANIMATION_MS = 900;
 const TOAST_DURATION_MS = 2600;
+const STORAGE_KEY = "drunk-goose-local-game";
 
 export interface GameContextValue {
   state: GameState;
   /** null = unrestricted: any device can act (this is the local pass-and-play mode). */
   myPlayerId: number | null;
-  startGame: (numPlayers: number) => void;
+  startGame: (numPlayers: number, names?: string[]) => void;
   rollDice: () => void;
   resolveModal: (tookShot: boolean) => void;
   restart: () => void;
+}
+
+function loadPersistedState(): GameState | null {
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as GameState;
+    if (parsed.phase === "setup") return null;
+    // Never resume mid-animation or with a stale toast lingering after reload.
+    return { ...parsed, isRolling: false, toast: null };
+  } catch {
+    return null;
+  }
 }
 
 export const GameContext = createContext<GameContextValue | null>(null);
@@ -40,12 +54,34 @@ export function GameProvider({ children }: { children: ReactNode }) {
   const jailTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const rollTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const stateRef = useRef(state);
+  const skipNextPersist = useRef(true);
   useEffect(() => {
     stateRef.current = state;
   });
 
-  const startGame = useCallback((numPlayers: number) => {
-    dispatch({ type: "START_GAME", numPlayers });
+  // Restore an in-progress game after an accidental reload/close.
+  useEffect(() => {
+    const persisted = loadPersistedState();
+    if (persisted) {
+      dispatch({ type: "HYDRATE", state: persisted });
+    }
+  }, []);
+
+  // Keep localStorage in sync, skipping the very first (still-initial) render.
+  useEffect(() => {
+    if (skipNextPersist.current) {
+      skipNextPersist.current = false;
+      return;
+    }
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch {
+      // storage unavailable (private mode, quota) — game just won't survive a reload
+    }
+  }, [state]);
+
+  const startGame = useCallback((numPlayers: number, names?: string[]) => {
+    dispatch({ type: "START_GAME", numPlayers, names });
   }, []);
 
   const rollDice = useCallback(() => {
