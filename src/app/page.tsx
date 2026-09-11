@@ -9,6 +9,7 @@ import { StartScreen } from "@/components/StartScreen";
 import { GameProvider, useGame } from "@/context/GameContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { OnlineGameProvider, useOnlineGame } from "@/context/OnlineGameContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import { ONLINE_MULTIPLAYER_ENABLED } from "@/lib/config";
 
 type Mode = "select" | "local" | "online";
@@ -55,8 +56,10 @@ function AppRouter() {
 
 export default function Home() {
   return (
-    <LanguageProvider>
-      <AppRouter />
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <AppRouter />
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }

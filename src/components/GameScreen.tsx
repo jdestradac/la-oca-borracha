@@ -10,6 +10,7 @@ import { useBoardImagesReady } from "@/lib/useBoardImagesReady";
 import { Board } from "./Board";
 import { ChallengeModal } from "./ChallengeModal";
 import { LanguageSwitch } from "./LanguageSwitch";
+import { ThemeSwitch } from "./ThemeSwitch";
 import { MobileBoard } from "./MobileBoard";
 import { PlayerPanel } from "./PlayerPanel";
 import { RoomBadge } from "./RoomBadge";
@@ -32,7 +33,10 @@ export function GameScreen() {
         <h1 className="flex items-center gap-2 bg-gradient-to-r from-pink-400 via-fuchsia-300 to-cyan-300 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">
           <GiBeerStein className="text-[var(--pink)]" /> {t("title")}
         </h1>
-        <LanguageSwitch />
+        <div className="flex items-center gap-3">
+          <ThemeSwitch />
+          <LanguageSwitch />
+        </div>
       </div>
 
       <RoomBadge />
@@ -54,7 +58,7 @@ export function GameScreen() {
 
       {/* Mobile: tabbed — Game (dice + board) / Players */}
       <div className="flex w-full flex-col items-center gap-4 lg:hidden">
-        <div className="flex w-full max-w-xs overflow-hidden rounded-full border border-white/15 bg-white/5">
+        <div className="flex w-full max-w-xs overflow-hidden rounded-full border border-[var(--border-soft)] bg-[var(--surface)]">
           <button
             type="button"
             onClick={() => setMobileTab("game")}

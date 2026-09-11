@@ -52,6 +52,7 @@ export const UI_TEXT: Dictionary = {
   },
   spacesShort: { en: "space(s)", es: "casilla(s)" },
   languageSwitchLabel: { en: "Language", es: "Idioma" },
+  themeSwitchLabel: { en: "Theme", es: "Tema" },
   rolledLabel: { en: "Rolled:", es: "Salió:" },
   safeMessage: { en: "Safe! No shots this time.", es: "¡Salvado! No tomas esta vez." },
   minPlayersError: {

@@ -6,6 +6,7 @@ import { GiBeerStein } from "react-icons/gi";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { useLanguage } from "@/context/LanguageContext";
 import { LanguageSwitch } from "./LanguageSwitch";
+import { ThemeSwitch } from "./ThemeSwitch";
 
 export function ModeSelect({
   onSelectLocal,
@@ -22,7 +23,8 @@ export function ModeSelect({
       animate={{ opacity: 1, y: 0 }}
       className="flex min-h-dvh flex-col items-center justify-center gap-8 px-6 text-center"
     >
-      <div className="absolute right-4 top-4">
+      <div className="absolute right-4 top-4 flex flex-col items-end gap-2">
+        <ThemeSwitch />
         <LanguageSwitch />
       </div>
 
@@ -38,7 +40,7 @@ export function ModeSelect({
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           onClick={onSelectLocal}
-          className="flex flex-col items-center gap-1 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_8px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl"
+          className="flex flex-col items-center gap-1 rounded-3xl border border-[var(--border-soft-2)] bg-[var(--surface)] p-6 shadow-[0_8px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl"
         >
           <span className="flex items-center gap-2 text-xl font-bold text-[var(--text)]">
             <IoPhonePortraitOutline className="text-[var(--pink)]" /> {t("playLocal")}
@@ -50,7 +52,7 @@ export function ModeSelect({
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           onClick={onSelectOnline}
-          className="flex flex-col items-center gap-1 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_8px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl"
+          className="flex flex-col items-center gap-1 rounded-3xl border border-[var(--border-soft-2)] bg-[var(--surface)] p-6 shadow-[0_8px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl"
         >
           <span className="flex items-center gap-2 text-xl font-bold text-[var(--text)]">
             <FaGlobe className="text-[var(--cyan)]" /> {t("playOnline")}

@@ -13,7 +13,7 @@ export function PlayerPanel() {
   const [confirmOpen, setConfirmOpen] = useState(false);
 
   return (
-    <div className="w-full max-w-xs rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] backdrop-blur-xl">
+    <div className="w-full max-w-xs rounded-2xl border border-[var(--border-soft-2)] bg-[var(--surface)] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] backdrop-blur-xl">
       <h2 className="mb-2 text-center text-lg font-bold text-[var(--text)]">{t("players")}</h2>
       <ul className="pretty-scrollbar flex max-h-80 flex-col gap-1.5 overflow-y-auto pr-1">
         {state.players.map((player, i) => (
@@ -21,8 +21,8 @@ export function PlayerPanel() {
             key={player.id}
             className={`flex items-center justify-between rounded-lg px-3 py-1.5 text-sm font-semibold transition-all ${
               i === state.currentPlayerIndex
-                ? "bg-white/10 ring-2 ring-inset ring-[var(--pink)]"
-                : "bg-white/[0.03]"
+                ? "bg-[var(--surface-strong)] ring-2 ring-inset ring-[var(--pink)]"
+                : "bg-[var(--surface-3)]"
             }`}
           >
             <span className="flex items-center gap-2 text-[var(--text)]">

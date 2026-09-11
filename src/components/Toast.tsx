@@ -36,7 +36,7 @@ export function Toast() {
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -16 }}
-          className="fixed left-1/2 top-4 z-[60] flex -translate-x-1/2 items-center gap-2 rounded-xl border border-white/10 bg-[#171029] px-6 py-3 text-center font-bold text-[var(--cyan)] shadow-[0_0_30px_rgba(34,211,238,0.35)]"
+          className="fixed left-1/2 top-4 z-[60] flex -translate-x-1/2 items-center gap-2 rounded-xl border border-[var(--border-soft-2)] bg-[var(--card-bg)] px-6 py-3 text-center font-bold text-[var(--cyan)] shadow-[0_0_30px_rgba(34,211,238,0.35)]"
         >
           {Icon && <Icon />}
           {message}

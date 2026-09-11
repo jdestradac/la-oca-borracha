@@ -36,13 +36,13 @@ export function FinalSummary() {
         </p>
       )}
 
-      <div className="w-full max-w-sm rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_8px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+      <div className="w-full max-w-sm rounded-3xl border border-[var(--border-soft-2)] bg-[var(--surface)] p-6 shadow-[0_8px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
         <h2 className="mb-3 text-lg font-bold text-[var(--text)]">{t("finalScoresTitle")}</h2>
         <ul className="flex flex-col gap-2">
           {ranked.map((player) => (
             <li
               key={player.id}
-              className="flex items-center justify-between rounded-lg bg-white/[0.04] px-4 py-2 font-semibold"
+              className="flex items-center justify-between rounded-lg bg-[var(--surface-2)] px-4 py-2 font-semibold"
               style={{ color: player.color }}
             >
               <span>{playerLabel(player, t("player"))}</span>

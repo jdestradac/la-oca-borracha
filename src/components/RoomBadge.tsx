@@ -11,7 +11,7 @@ export function RoomBadge() {
   if (!online || !online.roomId) return null;
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm">
+    <div className="flex flex-wrap items-center justify-center gap-3 rounded-full border border-[var(--border-soft-2)] bg-[var(--surface)] px-4 py-2 text-sm">
       <span className="font-semibold text-[var(--text-dim)]">
         {t("yourRoomCode")} <span className="font-bold text-[var(--cyan)]">{online.roomId}</span>
       </span>

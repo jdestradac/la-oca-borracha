@@ -6,6 +6,7 @@ import { FaGlobe } from "react-icons/fa6";
 import { useLanguage } from "@/context/LanguageContext";
 import { useOnlineGame } from "@/context/OnlineGameContext";
 import { LanguageSwitch } from "./LanguageSwitch";
+import { ThemeSwitch } from "./ThemeSwitch";
 
 const PLAYER_OPTIONS = Array.from({ length: 13 }, (_, i) => i + 3);
 
@@ -30,7 +31,8 @@ export function OnlineLobby({ onExit }: { onExit: () => void }) {
       animate={{ opacity: 1, y: 0 }}
       className="flex min-h-dvh flex-col items-center justify-center gap-6 px-6 py-10 text-center"
     >
-      <div className="absolute right-4 top-4">
+      <div className="absolute right-4 top-4 flex flex-col items-end gap-2">
+        <ThemeSwitch />
         <LanguageSwitch />
       </div>
 
@@ -38,7 +40,7 @@ export function OnlineLobby({ onExit }: { onExit: () => void }) {
         <FaGlobe className="text-[var(--cyan)]" /> {t("playOnline")}
       </h1>
 
-      <div className="flex w-full max-w-sm flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_8px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+      <div className="flex w-full max-w-sm flex-col gap-3 rounded-3xl border border-[var(--border-soft-2)] bg-[var(--surface)] p-6 shadow-[0_8px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
         <h2 className="text-lg font-bold text-[var(--text)]">{t("createRoomTitle")}</h2>
         <label htmlFor="numPlayers" className="text-sm font-semibold text-[var(--text-dim)]">
           {t("numPlayersLabel")}
@@ -47,10 +49,10 @@ export function OnlineLobby({ onExit }: { onExit: () => void }) {
           id="numPlayers"
           value={numPlayers}
           onChange={(e) => setNumPlayers(Number(e.target.value))}
-          className="rounded-xl border-2 border-white/15 bg-[#160f2b] px-4 py-2 text-lg font-bold text-[var(--text)] outline-none focus:border-[var(--pink)]"
+          className="rounded-xl border-2 border-[var(--border-soft)] bg-[var(--input-bg)] px-4 py-2 text-lg font-bold text-[var(--text)] outline-none focus:border-[var(--pink)]"
         >
           {PLAYER_OPTIONS.map((n) => (
-            <option key={n} value={n} className="bg-[#160f2b]">
+            <option key={n} value={n} className="bg-[var(--input-bg)]">
               {n}
             </option>
           ))}
@@ -70,7 +72,7 @@ export function OnlineLobby({ onExit }: { onExit: () => void }) {
         {t("orDivider")}
       </span>
 
-      <div className="flex w-full max-w-sm flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_8px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+      <div className="flex w-full max-w-sm flex-col gap-3 rounded-3xl border border-[var(--border-soft-2)] bg-[var(--surface)] p-6 shadow-[0_8px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
         <h2 className="text-lg font-bold text-[var(--text)]">{t("joinRoomTitle")}</h2>
         <label htmlFor="roomCode" className="text-sm font-semibold text-[var(--text-dim)]">
           {t("roomCodeLabel")}
@@ -81,7 +83,7 @@ export function OnlineLobby({ onExit }: { onExit: () => void }) {
           onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
           placeholder={t("roomCodePlaceholder")}
           maxLength={8}
-          className="rounded-xl border-2 border-white/15 bg-[#160f2b] px-4 py-2 text-center text-lg font-bold uppercase tracking-widest text-[var(--text)] outline-none focus:border-[var(--cyan)]"
+          className="rounded-xl border-2 border-[var(--border-soft)] bg-[var(--input-bg)] px-4 py-2 text-center text-lg font-bold uppercase tracking-widest text-[var(--text)] outline-none focus:border-[var(--cyan)]"
         />
         <motion.button
           whileHover={{ scale: 1.03 }}

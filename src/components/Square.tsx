@@ -50,7 +50,7 @@ export function Square({
           ? "border-amber-400/70 bg-gradient-to-br from-amber-500/25 to-amber-300/10 shadow-[0_0_16px_rgba(251,191,36,0.35)]"
           : isStart
             ? "border-[var(--pink)]/60 bg-gradient-to-br from-pink-500/20 to-purple-600/10 shadow-[0_0_16px_rgba(255,45,120,0.3)]"
-            : "border-white/10 bg-white/[0.04]"
+            : "border-[var(--border-soft-2)] bg-[var(--surface-2)]"
       } ${layoutMode === "flow" ? (isWide ? "aspect-[2/1] w-full" : "aspect-square w-full") : ""}`}
       style={
         layoutMode === "grid"
@@ -77,7 +77,7 @@ export function Square({
       {!loaded && occupants.length === 0 && (
         <span
           className={`z-0 select-none font-bold ${
-            isWinner ? "text-amber-300" : isStart ? "text-pink-200" : "text-white/40"
+            isWinner ? "text-amber-300" : isStart ? "text-pink-200" : "text-[var(--text-faint)]"
           }`}
           style={{ fontSize: "clamp(0.5rem, 2vw, 1.1rem)" }}
         >
