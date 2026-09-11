@@ -1,26 +1,139 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0b0a1a;
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-strong: rgba(255, 255, 255, 0.1);
+  --border-soft: rgba(255, 255, 255, 0.12);
+  --text: #f5f3ff;
+  --text-dim: rgba(245, 243, 255, 0.65);
+  --pink: #ff2d78;
+  --purple: #7c3aed;
+  --cyan: #22d3ee;
+  --gold: #fbbf24;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --font-sans: var(--font-fredoka);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-fredoka), "Trebuchet MS", sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38rem 30rem at 8% -6%, rgba(255, 45, 120, 0.28), transparent 60%),
+    radial-gradient(34rem 30rem at 100% 0%, rgba(124, 58, 237, 0.3), transparent 60%),
+    radial-gradient(40rem 34rem at 50% 110%, rgba(34, 211, 238, 0.18), transparent 60%),
+    var(--bg);
+}
+
+button:not(:disabled),
+[role="button"],
+select,
+label[for] {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+@keyframes bounce-title {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+.title-bounce {
+  animation: bounce-title 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow-turn {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25), 0 0 26px 6px var(--glow-color, var(--pink));
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.4), 0 0 40px 12px var(--glow-color, var(--pink));
+  }
+}
+
+.turn-glow {
+  animation: glow-turn 1.6s ease-in-out infinite;
+}
+
+/* --- 3D dice --- */
+.dice-scene {
+  --dice-size: clamp(64px, 16vw, 110px);
+  width: var(--dice-size);
+  height: var(--dice-size);
+  perspective: calc(var(--dice-size) * 6);
+}
+
+.dice-cube {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.23, 1.01, 0.32, 1);
+}
+
+.dice-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 14%;
+  background: linear-gradient(155deg, #201a3a, #140f28);
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16%;
+  box-shadow:
+    inset 0 0 14px rgba(124, 58, 237, 0.35),
+    0 0 18px rgba(255, 45, 120, 0.25);
+}
+
+.dice-face-1 {
+  transform: rotateY(0deg) translateZ(calc(var(--dice-size) / 2));
+}
+.dice-face-2 {
+  transform: rotateY(180deg) translateZ(calc(var(--dice-size) / 2));
+}
+.dice-face-3 {
+  transform: rotateY(90deg) translateZ(calc(var(--dice-size) / 2));
+}
+.dice-face-4 {
+  transform: rotateY(-90deg) translateZ(calc(var(--dice-size) / 2));
+}
+.dice-face-5 {
+  transform: rotateX(90deg) translateZ(calc(var(--dice-size) / 2));
+}
+.dice-face-6 {
+  transform: rotateX(-90deg) translateZ(calc(var(--dice-size) / 2));
+}
+
+.dice-pip {
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 30%, #ff69b4, var(--pink));
+  box-shadow: 0 0 6px rgba(255, 45, 120, 0.7);
+  align-self: center;
+  justify-self: center;
 }
