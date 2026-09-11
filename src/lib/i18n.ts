@@ -7,10 +7,10 @@ export const DEFAULT_LANGUAGE: Language = "en";
 type Dictionary = Record<string, Record<Language, string>>;
 
 export const UI_TEXT: Dictionary = {
-  title: { en: "Blowjob Palma", es: "Palma la chupa" },
+  title: { en: "The Drunk Dick", es: "La Polla Borracha" },
   subtitle: {
-    en: "A party board game — drink responsibly!",
-    es: "Un juego de mesa de fiesta — ¡bebe con responsabilidad!",
+    en: "A dick-themed party board game — drink with your dick!",
+    es: "Un juego de mesa de fiesta de pollas — ¡bebe con la polla!",
   },
   numPlayersLabel: { en: "Select number of players:", es: "Selecciona la cantidad de jugadores:" },
   playerNamesLabel: {

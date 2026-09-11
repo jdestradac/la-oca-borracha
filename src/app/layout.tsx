@@ -9,7 +9,7 @@ const fredoka = Fredoka({
 });
 
 export const metadata: Metadata = {
-  title: "The Drunk Goose",
+  title: "The Drunk Dick",
   description: "A party board game — drink responsibly!",
 };
 
