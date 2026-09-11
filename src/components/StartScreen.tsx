@@ -36,8 +36,10 @@ export function StartScreen() {
       animate={{ opacity: 1, y: 0 }}
       className="flex min-h-dvh flex-col items-center justify-center gap-8 px-6 py-10 text-center"
     >
-      <div className="absolute right-4 top-4 flex flex-col items-end gap-2">
+      <div className="absolute left-4 top-4">
         <ThemeSwitch />
+      </div>
+      <div className="absolute right-4 top-4">
         <LanguageSwitch />
       </div>
 
